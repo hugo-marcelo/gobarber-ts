@@ -32,12 +32,16 @@ local.properties
 # node.js
 #
 node_modules/
+temp/
 dist
 __tests__/coverage
 npm-debug.log
 yarn-error.log
 yarn.lock
 .env
+
+tmp/*
+!tmp/.gitkeep
 
 # BUCK
 buck-out/
