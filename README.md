@@ -1,5 +1,5 @@
 <h1 align="center">
-  <img alt="GoBarber" title="gobarber" src=".github/logo.png" width="200px" />
+  <img alt="GoBarber" title="gobarber" src=".github/logo.svg" width="200px" />
 </h1>
 
 <h3 align="center">
@@ -54,6 +54,20 @@ yarn dev
 # executar os testes
 yarn test
 
+```
+
+---
+
+## :computer: Front-end
+
+### :information_source: Instruções Front-end
+
+```bash
+#instalar os pacotes e dependências
+yarn
+
+# iniciar a aplicação web
+yarn start
 ```
 
 ---
