@@ -29,7 +29,13 @@
         "argsIgnorePattern": "_"
       }
     ],
-    "import/extensions": ["error", "always", { "ignorePackages": true }]
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "ts": "never"
+      }
+    ]
   },
   "settings": {
     "import/resolver": {
