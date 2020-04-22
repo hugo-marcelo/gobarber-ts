@@ -1,0 +1,39 @@
+version: '3.6'
+
+networks:
+  gobarber-network:
+    driver: bridge
+
+services:
+  gobarber-api:
+    build: .
+    volumes:
+      - .:/home/node/api
+    environment:
+      - POSTGRESQL_HOST=gobarber-postgresql
+    depends_on:
+      - gobarber-postgresql
+    networks:
+      - gobarber-network
+    links:
+      - gobarber-postgresql
+    container_name: gobarber-api
+    command: yarn dev
+    ports:
+      - 3333:3333
+
+  gobarber-postgresql:
+    image: bitnami/postgresql:latest
+    container_name: gobarber-postgresql
+    restart: always
+    environment:
+      - ALLOW_EMPTY_PASSWORD=no
+      - POSTGRESQL_USERNAME=${POSTGRESQL_USER}
+      - POSTGRESQL_PASSWORD=${POSTGRESQL_PASS}
+      - POSTGRESQL_DATABASE=${POSTGRESQL_NAME}
+    ports:
+      - '5432:5432'
+    volumes:
+      - /tmp/postgresql:/bitnami
+    networks:
+      - gobarber-network
