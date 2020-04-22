@@ -35,6 +35,10 @@ docker run --name gobarber -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres
 yarn
 ```
 
+---
+
+#### Executando back-end
+
 ```bash
 
 # criar estrutura do banco de dados Postgres
