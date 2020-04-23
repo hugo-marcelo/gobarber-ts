@@ -82,7 +82,7 @@ yarn
 Alterar a variável baseURL em `/src/services/api.js` colocando o ip local ou do emulador
 
 ```bash
-# inicializar a aplicação web
+# inicializar o aplicativo no emulador do Android
 yarn android
 ```
 
