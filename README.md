@@ -62,6 +62,29 @@ yarn
 # iniciar a aplicação web
 yarn start
 ```
+---
+## :iphone: Mobile
+
+### :information_source: Instruções Mobile (iOS)
+```bash
+#instalar os pacotes e dependências
+yarn
+
+# iniciar o aplicativo no emulador do iOS
+yarn ios
+```
+
+### :information_source: Instruções Mobile (Android)
+```bash
+#instalar os pacotes e dependências
+yarn
+```
+Alterar a variável baseURL em `/src/services/api.js` colocando o ip local ou do emulador
+
+```bash
+# inicializar a aplicação web
+yarn android
+```
 
 ---
 
