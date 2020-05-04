@@ -5,9 +5,9 @@ module.exports = {
   username: process.env.POSTGRESQL_USER,
   password: process.env.POSTGRESQL_PASS,
   database: process.env.POSTGRESQL_NAME,
-  entities: ['./src/models/*.ts'],
-  migrations: ['./src/database/migrations/*.ts'],
+  entities: ['./src/modules/**/infra/typeorm/entities/*.ts'],
+  migrations: ['./src/shared/infra/typeorm/migrations/*.ts'],
   cli: {
-    migrationsDir: './src/database/migrations',
+    migrationsDir: './src/shared/infra/typeorm/migrations',
   },
 };
