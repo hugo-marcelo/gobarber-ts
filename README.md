@@ -31,6 +31,9 @@ docker-compose up -d
 # instalar PostgreSQL - Banco de dados principal
 docker run --name gobarber -e POSTGRES_PASSWORD=docker -p 5432:5432 -d postgres
 
+# instalar MongoDB
+docker run --name mongodb -p 27017:27017 -d -t mongo
+
 # instalar os pacotes e dependências
 yarn
 ```
