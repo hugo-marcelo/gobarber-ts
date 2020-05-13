@@ -11,12 +11,15 @@ services:
       - .:/home/node/api
     environment:
       - POSTGRESQL_HOST=gobarber-postgresql
+      - MONGODB_HOST=gobarber-mongo
     depends_on:
       - gobarber-postgresql
+      - gobarber-mongo
     networks:
       - gobarber-network
     links:
       - gobarber-postgresql
+      - gobarber-mongo
     container_name: gobarber-api
     command: yarn dev
     ports:
@@ -35,5 +38,19 @@ services:
       - '5432:5432'
     volumes:
       - /tmp/postgresql:/bitnami
+    networks:
+      - gobarber-network
+
+  gobarber-mongo:
+    image: bitnami/mongodb:latest
+    container_name: gobarber-mongo
+    restart: always
+    environment:
+      - MONGODB_HOST=${MONGODB_HOST}
+      - MONGODB_NAME=${MONGODB_NAME}
+    ports:
+      - '27017:27017'
+    volumes:
+      - /tmp/mongo:/bitnami
     networks:
       - gobarber-network
