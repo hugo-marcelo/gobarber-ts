@@ -21,7 +21,7 @@
 #### :whale: Executando com Docker Compose
 
 ```bash
-# instalar os contâineres da API e PostgreSQL
+# instalar os contâineres da API, PostgreSQL, MongoDB e Redis
 docker-compose up -d
 ```
 
