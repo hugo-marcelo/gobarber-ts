@@ -12,14 +12,17 @@ services:
     environment:
       - POSTGRESQL_HOST=gobarber-postgresql
       - MONGODB_HOST=gobarber-mongo
+      - REDIS_HOST=gobarber-redis
     depends_on:
       - gobarber-postgresql
       - gobarber-mongo
+      - gobarber-redis
     networks:
       - gobarber-network
     links:
       - gobarber-postgresql
       - gobarber-mongo
+      - gobarber-redis
     container_name: gobarber-api
     command: yarn dev
     ports:
@@ -52,5 +55,19 @@ services:
       - '27017:27017'
     volumes:
       - /tmp/mongo:/bitnami
+    networks:
+      - gobarber-network
+
+  gobarber-redis:
+    image: bitnami/redis:latest
+    container_name: gobarber-redis
+    restart: always
+    environment:
+      - ALLOW_EMPTY_PASSWORD=no
+      - REDIS_PASSWORD=${REDIS_PASS}
+    ports:
+      - '6379:6379'
+    volumes:
+      - /tmp/redis:/bitnami/redis/data
     networks:
       - gobarber-network
