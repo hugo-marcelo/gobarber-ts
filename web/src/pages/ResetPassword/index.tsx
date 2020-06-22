@@ -50,8 +50,6 @@ const ResetPassword: React.FC = () => {
 
         const token = location.search.replace('?token=', '');
 
-        console.log('token', token);
-
         if (!token) {
           throw new Error();
         }

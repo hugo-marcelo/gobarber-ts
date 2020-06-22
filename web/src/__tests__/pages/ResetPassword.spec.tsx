@@ -6,6 +6,7 @@ import api from '../../services/api';
 import ResetPassword from '../../pages/ResetPassword';
 
 const mockedHistoryPush = jest.fn();
+const mockedLocationSearch = jest.fn();
 const mockedAddToast = jest.fn();
 
 const apiMock = new AxiosMock(api);
@@ -16,7 +17,9 @@ jest.mock('react-router-dom', () => {
       push: mockedHistoryPush,
     }),
     useLocation: () => ({
-      search: '123',
+      search: {
+        replace: mockedLocationSearch,
+      },
     }),
   };
 });
@@ -32,10 +35,17 @@ jest.mock('../../hooks/toast', () => {
 describe('ResetPassword Page', () => {
   beforeEach(() => {
     mockedHistoryPush.mockClear();
+    mockedLocationSearch.mockClear();
     mockedAddToast.mockClear();
   });
 
   it('should be able to reset password', async () => {
+    apiMock.onPost('/password/reset').reply(200);
+
+    mockedLocationSearch.mockImplementation(() => {
+      return 'token-123';
+    });
+
     const { getByPlaceholderText, getByText } = render(<ResetPassword />);
 
     const passwordField = getByPlaceholderText('Nova Senha');
@@ -49,8 +59,6 @@ describe('ResetPassword Page', () => {
       target: { value: '12345' },
     });
 
-    apiMock.onPost('/password/reset').reply(200);
-
     fireEvent.click(buttonElement);
 
     await wait(() => {
@@ -59,6 +67,12 @@ describe('ResetPassword Page', () => {
   });
 
   it('should not be able to reset password with invalid passwords', async () => {
+    apiMock.onPost('/password/reset').replyOnce(400);
+
+    mockedLocationSearch.mockImplementation(() => {
+      return 'token-123';
+    });
+
     const { getByPlaceholderText, getByText } = render(<ResetPassword />);
 
     const passwordField = getByPlaceholderText('Nova Senha');
@@ -80,6 +94,12 @@ describe('ResetPassword Page', () => {
   });
 
   it('should not be able to reset password without a token', async () => {
+    apiMock.onPost('/password/reset').replyOnce(400);
+
+    mockedLocationSearch.mockImplementation(() => {
+      return undefined;
+    });
+
     const { getByPlaceholderText, getByText } = render(<ResetPassword />);
 
     const passwordField = getByPlaceholderText('Nova Senha');
@@ -101,6 +121,12 @@ describe('ResetPassword Page', () => {
   });
 
   it('should display an error if reset password fails', async () => {
+    apiMock.onPost('/password/reset').reply(400);
+
+    mockedLocationSearch.mockImplementation(() => {
+      return 'token-123';
+    });
+
     const { getByPlaceholderText, getByText } = render(<ResetPassword />);
 
     const passwordField = getByPlaceholderText('Nova Senha');
@@ -113,8 +139,6 @@ describe('ResetPassword Page', () => {
     fireEvent.change(passwordConfirmationField, {
       target: { value: '12345' },
     });
-
-    apiMock.onPost('/password/reset').reply(400);
 
     fireEvent.click(buttonElement);
 
