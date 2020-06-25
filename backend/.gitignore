@@ -41,6 +41,7 @@ yarn.lock
 .env
 ormconfig.js
 .vscode/.easyRedis.redis
+dist
 
 tmp/*
 !tmp/.gitkeep
