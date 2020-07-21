@@ -16,6 +16,10 @@
 
 ## :gear: Back-end
 
+### :information_source: Deploy
+
+- https://gobarber-ts-api.herokuapp.com
+
 ### :information_source: Instruções Back-end
 
 #### :whale: Executando com Docker Compose
@@ -58,6 +62,10 @@ yarn dev:server
 ---
 
 ## :computer: Front-end
+
+### :information_source: Deploy
+
+- https://gobarber-ts-web.herokuapp.com
 
 ### :information_source: Instruções Front-end
 
