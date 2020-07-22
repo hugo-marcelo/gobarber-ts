@@ -14,6 +14,10 @@
 <a href="https://www.codacy.com/manual/hugo-marcelo/gobarber-ts?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=hugo-marcelo/gobarber-ts&amp;utm_campaign=Badge_Grade"><img src="https://api.codacy.com/project/badge/Grade/147d0b2836734c79b7ee5ea035f065b4"/></a>
 </p>
 
+<h3 align="center">
+  <a href="https://insomnia.rest/run/?label=GoBarber&uri=https%3A%2F%2Fraw.githubusercontent.com%2Fhugo-marcelo%2Fgobarber-ts%2Fmaster%2Fbackend%2FInsomnia.json" target="_blank"><img src="https://insomnia.rest/images/run.svg" alt="Run in Insomnia"></a>
+</h3>
+
 ## :gear: Back-end
 
 ### :information_source: Deploy
